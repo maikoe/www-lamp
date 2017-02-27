@@ -1,10 +1,16 @@
 FROM ubuntu:16.04
 MAINTAINER Maiko Eskelsen <maikoe@gmail.com>
 
-# required by PHP 5.6
+# Update apt
+RUN apt-get update
+
+# Install MySQL 5.7
+RUN apt-get install -y mysql-server mysql-client
+
+# Required by PHP 5.6
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && \
-    apt-get install -y language-pack-en-base &&\
+    apt-get install -y language-pack-en-base language-pack-pt-base &&\
     export LC_ALL=pt_BR.UTF-8 && \
     export LANG=pt_BR.UTF-8
 
